@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="em">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Online Code Editor</title>
+    <link rel="stylesheet" href="livecode.css">
+
+    <script src="https://kit.fontawesome.com/6376456ce1.js"
+    crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="main-contianer">
+      <div class="code-editor-container">
+        <h1 class="editor-heading">
+            <label><i class="fa-brands fa-html5"></i>HTML
+            </label>
+        </h1>
+
+        
+        <textarea id="html-editor"placeholder="HTML"onkeyup="run()"></textarea>
+      </div>
+      <div class="code-editor-container">
+        <h1 class="editor-heading">
+            <label><i class="fa-brands fa-css3-alt"></i>CSS
+            </label>
+        </h1>
+
+
+        <textarea id="css-editor" placeholder="CSS" onkeyup="run()"></textarea>
+      </div>
+      <div class="code-editor-container">
+        <h1 class="editor-heading">
+            <label><i class="fa-brands fa-js"></i>JAVASCRIPT
+            </label>
+        </h1>
+
+
+        <textarea id="javascript-editor"placeholder="JAVASCRIPT"onkeyup="run()"></textarea>
+      </div>
+    </div>
+    <div class="output-container">
+      <h1 class="output-heading">
+        <label><i class="fa-solid fa-play"></i> OUTPUT
+        </label>
+      </h1>
+      <iframe id="code"></iframe>
+    </div>
+    <script>
+      function run() {
+        let html = document.getElementById("html-editor").value;
+        let css = document.getElementById("css-editor").value;
+        let js = document.getElementById("javascript-editor").value;
+        let code = document.getElementById("code");
+        
+        code.contentDocument.body.innerHTML = html + "<style>" + css + "</style>";
+
+        code.contentWindow.eval(js);
+      }
+    </script>
+  </body>
+</html>
